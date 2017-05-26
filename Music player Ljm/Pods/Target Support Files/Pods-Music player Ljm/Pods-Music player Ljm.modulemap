@@ -1,0 +1,6 @@
+framework module Pods_Music_player_Ljm {
+  umbrella header "Pods-Music player Ljm-umbrella.h"
+
+  export *
+  module * { export * }
+}
