@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 //MARK: -   事件回调
-typealias btnClicked = (UIAlertAction!) -> Void
+typealias btnClicked        =   (UIAlertAction!) -> Void
 
 //MARK: -   自定义“预处理”
 /* 屏幕大小 */
@@ -48,7 +48,7 @@ var tempPath                =   NSTemporaryDirectory()
 
 
 
-
+//MARK: -   自定义播放列表中的控件
 class congfig {
     struct Notification {
         static let updatePlayingView    =   "updatePlayingView"
@@ -122,7 +122,8 @@ class congfig {
         control.present(alertVC, animated: true, completion: nil)
         
         /* 延迟执行 */
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(3)) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(3))
+        {
             
             print("dismiss alertVC")
             /* 提示框消失 */
@@ -131,4 +132,19 @@ class congfig {
         
     }
     
+}
+
+
+//MARK: -   返回系统时间
+public var currentTime      :    String
+{
+    get
+    {
+        let dataFormatter           =       DateFormatter()
+        
+        dataFormatter.dateFormat    =       "yyyyMMddHHmmss"
+        
+        return dataFormatter.string(from: Date())
+        
+    }
 }

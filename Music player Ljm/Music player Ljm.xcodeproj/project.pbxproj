@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A1B60171ED826CF000D488A /* songAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1B60161ED826CF000D488A /* songAPI.swift */; };
+		1A1B601C1ED83460000D488A /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1B601B1ED83460000D488A /* SongModel.swift */; };
 		1A34C3ED1ED8118C002EA9E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A34C3EC1ED8118C002EA9E2 /* AppDelegate.swift */; };
 		1A34C3EF1ED8118C002EA9E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A34C3EE1ED8118C002EA9E2 /* ViewController.swift */; };
 		1A34C3F21ED8118C002EA9E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A34C3F01ED8118C002EA9E2 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		1A1B60161ED826CF000D488A /* songAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = songAPI.swift; sourceTree = "<group>"; };
+		1A1B601B1ED83460000D488A /* SongModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
 		1A34C3E91ED8118C002EA9E2 /* Music player Ljm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music player Ljm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A34C3EC1ED8118C002EA9E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A34C3EE1ED8118C002EA9E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		1A1B60181ED83297000D488A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				1A1B601B1ED83460000D488A /* SongModel.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		1A34C3E01ED8118C002EA9E2 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				1A34C3EC1ED8118C002EA9E2 /* AppDelegate.swift */,
+				1A1B60181ED83297000D488A /* model */,
 				1A34C3FE1ED818DB002EA9E2 /* config */,
 				1A34C3EE1ED8118C002EA9E2 /* ViewController.swift */,
 				1A34C3F01ED8118C002EA9E2 /* Main.storyboard */,
@@ -226,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A1B601C1ED83460000D488A /* SongModel.swift in Sources */,
 				1A34C3EF1ED8118C002EA9E2 /* ViewController.swift in Sources */,
 				1A1B60171ED826CF000D488A /* songAPI.swift in Sources */,
 				1A34C4001ED81911002EA9E2 /* congfig.swift in Sources */,
