@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		1A1B60171ED826CF000D488A /* songAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1B60161ED826CF000D488A /* songAPI.swift */; };
 		1A1B601C1ED83460000D488A /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1B601B1ED83460000D488A /* SongModel.swift */; };
+		1A1B601F1ED909ED000D488A /* navigationcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1B601E1ED909ED000D488A /* navigationcontroller.swift */; };
+		1A1B60211ED90BAA000D488A /* tabbarcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1B60201ED90BAA000D488A /* tabbarcontroller.swift */; };
+		1A1B60241ED90C5F000D488A /* tableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1B60231ED90C5F000D488A /* tableViewController.swift */; };
+		1A1B60271ED9152A000D488A /* musicListTableviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1B60261ED9152A000D488A /* musicListTableviewcontroller.swift */; };
+		1A1B602A1ED9166D000D488A /* musicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1B60291ED9166D000D488A /* musicListCell.swift */; };
+		1A1B602C1ED93D7C000D488A /* downloadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1B602B1ED93D7C000D488A /* downloadCell.swift */; };
 		1A34C3ED1ED8118C002EA9E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A34C3EC1ED8118C002EA9E2 /* AppDelegate.swift */; };
 		1A34C3EF1ED8118C002EA9E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A34C3EE1ED8118C002EA9E2 /* ViewController.swift */; };
 		1A34C3F21ED8118C002EA9E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A34C3F01ED8118C002EA9E2 /* Main.storyboard */; };
@@ -21,6 +27,12 @@
 /* Begin PBXFileReference section */
 		1A1B60161ED826CF000D488A /* songAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = songAPI.swift; sourceTree = "<group>"; };
 		1A1B601B1ED83460000D488A /* SongModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
+		1A1B601E1ED909ED000D488A /* navigationcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = navigationcontroller.swift; sourceTree = "<group>"; };
+		1A1B60201ED90BAA000D488A /* tabbarcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tabbarcontroller.swift; sourceTree = "<group>"; };
+		1A1B60231ED90C5F000D488A /* tableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableViewController.swift; sourceTree = "<group>"; };
+		1A1B60261ED9152A000D488A /* musicListTableviewcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = musicListTableviewcontroller.swift; sourceTree = "<group>"; };
+		1A1B60291ED9166D000D488A /* musicListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = musicListCell.swift; sourceTree = "<group>"; };
+		1A1B602B1ED93D7C000D488A /* downloadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = downloadCell.swift; sourceTree = "<group>"; };
 		1A34C3E91ED8118C002EA9E2 /* Music player Ljm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music player Ljm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A34C3EC1ED8118C002EA9E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A34C3EE1ED8118C002EA9E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +75,42 @@
 			name = model;
 			sourceTree = "<group>";
 		};
+		1A1B601D1ED90995000D488A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1A1B60251ED91475000D488A /* musicList */,
+				1A1B60221ED90C35000D488A /* download */,
+				1A1B601E1ED909ED000D488A /* navigationcontroller.swift */,
+				1A1B60201ED90BAA000D488A /* tabbarcontroller.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		1A1B60221ED90C35000D488A /* download */ = {
+			isa = PBXGroup;
+			children = (
+				1A1B60231ED90C5F000D488A /* tableViewController.swift */,
+			);
+			name = download;
+			sourceTree = "<group>";
+		};
+		1A1B60251ED91475000D488A /* musicList */ = {
+			isa = PBXGroup;
+			children = (
+				1A1B60261ED9152A000D488A /* musicListTableviewcontroller.swift */,
+			);
+			name = musicList;
+			sourceTree = "<group>";
+		};
+		1A1B60281ED9164F000D488A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				1A1B60291ED9166D000D488A /* musicListCell.swift */,
+				1A1B602B1ED93D7C000D488A /* downloadCell.swift */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
 		1A34C3E01ED8118C002EA9E2 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +132,8 @@
 		1A34C3EB1ED8118C002EA9E2 /* Music player Ljm */ = {
 			isa = PBXGroup;
 			children = (
+				1A1B60281ED9164F000D488A /* view */,
+				1A1B601D1ED90995000D488A /* ViewController */,
 				1A34C3EC1ED8118C002EA9E2 /* AppDelegate.swift */,
 				1A1B60181ED83297000D488A /* model */,
 				1A34C3FE1ED818DB002EA9E2 /* config */,
@@ -240,7 +290,13 @@
 				1A1B601C1ED83460000D488A /* SongModel.swift in Sources */,
 				1A34C3EF1ED8118C002EA9E2 /* ViewController.swift in Sources */,
 				1A1B60171ED826CF000D488A /* songAPI.swift in Sources */,
+				1A1B602A1ED9166D000D488A /* musicListCell.swift in Sources */,
+				1A1B60241ED90C5F000D488A /* tableViewController.swift in Sources */,
+				1A1B601F1ED909ED000D488A /* navigationcontroller.swift in Sources */,
 				1A34C4001ED81911002EA9E2 /* congfig.swift in Sources */,
+				1A1B602C1ED93D7C000D488A /* downloadCell.swift in Sources */,
+				1A1B60211ED90BAA000D488A /* tabbarcontroller.swift in Sources */,
+				1A1B60271ED9152A000D488A /* musicListTableviewcontroller.swift in Sources */,
 				1A34C3ED1ED8118C002EA9E2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
