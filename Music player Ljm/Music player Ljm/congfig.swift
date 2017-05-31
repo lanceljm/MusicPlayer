@@ -81,7 +81,7 @@ class congfig {
     class func makeLabe (
                         _ frame         :   CGRect!     ,
                         _ textColor     :   UIColor?    ,
-                        _ color         :   UIColor?    ,
+                        _ bgColor       :   UIColor?    ,
                         _ textSize      :   CGFloat?
         )
         -> UILabel
@@ -98,7 +98,7 @@ class congfig {
                 lab.textColor           =       color
             }
             
-            if let bgColor  =   color       {
+            if let bgColor  =   bgColor       {
                 lab.backgroundColor     =       bgColor
             }
      

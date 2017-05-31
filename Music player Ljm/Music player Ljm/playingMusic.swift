@@ -12,13 +12,11 @@ import AFSoundManager
 class playingMusic: NSObject {
 
     /* 单例 */
-    static let sharePlayingServiece = networkingservice()
+    static let sharePlayingServiece = playingMusic()
     
     
     /* 重载实例方法 */
-    private override init() {
-        
-    }
+    private override init() {}
     
     
     /* 歌曲列表 */
@@ -43,29 +41,30 @@ class playingMusic: NSObject {
     
     
     /* 歌曲名 */
-    var songName                    :       String?
+    var songName                    :       String!
+    
     
     
     /* 专辑封面 */
-    var songAlbue                   :       String?
+    var songAlbue                   :       String!
     
     
     /* 下载链接 */
-    var downUrl                     :       String?
+    var downUrl                     :       String!
     
     
     /* 歌曲时间 */
-    var songDuration                :       String?
+    var songDuration                :       String!
     
     
     
     /* 格式化歌曲播放时间 */
-    var songPlayedFormatterTime     :       String?
+    var songPlayedFormatterTime     :       String!
     
     
     
     /* 格式化歌曲剩余时间 */
-    var songRemoinderFormatterTime  :       String?
+    var songRemoinderFormatterTime  :       String!
     
     
     
@@ -271,7 +270,17 @@ class playingMusic: NSObject {
     }
     
     
-    
+    //MARK: -   快进快退
+    func seekToCurrentSlider( _ second:Int) {
+        soundQueue?.playItem(at: second)
+        soundQueue?.playCurrentItem()
+        
+        
+        //////////////////////////////////////////////////////////////////
+        
+        
+        listenCurrentMusicCallBack(soundQueue!)
+    }
     
     
     
