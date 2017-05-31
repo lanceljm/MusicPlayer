@@ -9,7 +9,8 @@
 import UIKit
 import SnapKit
 
-class downloadCell: UITableViewCell {
+class downloadCell: UITableViewCell
+{
 
     
     public  var downImage       :   UIImageView?
@@ -18,14 +19,16 @@ class downloadCell: UITableViewCell {
     public  var downSuccess     :   UIImageView?
     
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?)
+    {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
     }
     
     
     
-    func setupUI() {
+    func setupUI()
+    {
         downImage = UIImageView()
         addSubview(downImage!)
         

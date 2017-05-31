@@ -148,3 +148,14 @@ public var currentTime      :    String
         
     }
 }
+
+
+
+
+//MARK: -   保存计算型属性，url
+let IPSaveKey = "IPSaveKey"
+
+/* 只读计算型属性，不保存值，值参与计算后返回最新的值 */
+var baseURLString:String? {
+    return UserDefaults.standard.object(forKey: IPSaveKey) as? String
+}

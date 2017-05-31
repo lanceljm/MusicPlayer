@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>AFSoundManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,12 +37,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3F39AE44010CE6298CAF0064383E7C8F</key>
+		<key>4119607EDF7EC64B84AC7BA427C3E9BA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4119607EDF7EC64B84AC7BA427C3E9BA</key>
+		<key>B1AD3864BF8108839F6A08A054BE169D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,12 +52,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>CF671F7E57B92905F1CC91D036D6B4A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D52144DE9D7255DE912490FF5A806573</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EF0FC889949CAFC0DD531DAE1A1615F8</key>
+		<key>E09ACC32780969C6BE148040BEF1CF9A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

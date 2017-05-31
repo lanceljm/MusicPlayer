@@ -19,16 +19,19 @@ class navigationcontroller: UINavigationController {
     
     
     
-    override init(rootViewController: UIViewController) {
+    override init(rootViewController: UIViewController)
+    {
         super.init(rootViewController: rootViewController)
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
         super.init(nibName: nil, bundle: nil)
     }
     
     
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder)
+    {
         fatalError("init(coder:) has not been implemented")
     }
 

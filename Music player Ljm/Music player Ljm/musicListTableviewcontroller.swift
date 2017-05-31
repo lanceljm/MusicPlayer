@@ -15,7 +15,8 @@ private let identifier = "cell"
 public var player:AFSoundPlayback?
 
 
-class musicListTableviewcontroller: UITableViewController {
+class musicListTableviewcontroller: UITableViewController
+{
 
     
     var musicData = [Songs]()

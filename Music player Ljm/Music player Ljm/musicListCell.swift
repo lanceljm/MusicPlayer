@@ -18,17 +18,20 @@ class musicListCell: UITableViewCell {
 
     
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?)
+    {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder)
+    {
         fatalError("init(coder:) has not been implemented")
     }
     
     
-    func setupCell() {
+    func setupCell()
+    {
         /* 图片 */
         musicImage = UIImageView()
 //        musicImage?.center = CGPoint(x: 30, y: 25)

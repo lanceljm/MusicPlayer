@@ -1,5 +1,5 @@
 //
-//  tableViewController.swift
+//  downloadMusicTableViewController.swift
 //  Music player Ljm
 //
 //  Created by ljm on 2017/5/27.
@@ -8,68 +8,79 @@
 
 import UIKit
 
-private let identifier = "mycell"
-private let path = NSHomeDirectory() + "Documents/Music/"
+private let identifier  =       "mycell"
+private let path        =       NSHomeDirectory() + "/Documents/Music/"
 
-class tableViewController: UITableViewController {
+class downloadMusicTableViewController: UITableViewController
+{
 
     
-    var dataArray = [String]()
+    var dataArray       =       [String]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = UIColor.white
-        
-        /* 注册cell */
+
+ 
+        view.backgroundColor    =   #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: identifier)
         
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
         super.viewWillAppear(animated)
-        dataArray = []
         
-        let fileManager = FileManager.default
-        let enumerator:FileManager.DirectoryEnumerator! = fileManager.enumerator(atPath: path)
+        dataArray       =       []
+        let fileManager =       FileManager.default
+        let enumeator:FileManager.DirectoryEnumerator! = fileManager.enumerator(atPath: path)
         
         /* 遍历目录 */
-        while let element = enumerator?.nextObject() as? String {
+        while let element       =   enumeator.nextObject() as? String {
             dataArray.append("\(element)")
         }
         tableView.reloadData()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
         
     }
-    
-    
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        
         return self.dataArray.count
     }
 
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier , for: indexPath)
-        cell.textLabel?.text = dataArray[indexPath.row]
-        cell.accessoryType = .checkmark
-        // Configure the cell...
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+
+        cell.textLabel?.text    =   dataArray[indexPath.row]
+        cell.accessoryType      =   .checkmark
 
         return cell
     }
 
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    
     
     /*
     // Override to support conditional editing of the table view.
