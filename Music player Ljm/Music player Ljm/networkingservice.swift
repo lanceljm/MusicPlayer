@@ -35,8 +35,6 @@ class networkingservice: NSObject {
         let ecodeUrl = url?.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         let session: URLSessionTask = URLSession.shared.dataTask(with: URL(string: ecodeUrl!)!, completionHandler: {(data,response,error)->Void in
             
-            print(data! ,response!, error as Any)
-            
             let json = JSON(data: data!)["showapi_res_body"]["pagebean"]["songlist"].array
             completeHondle(json,error)
         })

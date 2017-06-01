@@ -152,7 +152,7 @@ class ViewController: UIViewController {
         
         songName?.center = CGPoint(
             x: screenWidth * 0.5,
-            y: (self.navigationController?.navigationBar.frame.height)! + 40)
+            y: /*(self.navigationController?.navigationBar.frame.height)!*/ 64 + 40)
         songName?.textAlignment = .center
         view.addSubview(songName!)
         
@@ -182,7 +182,7 @@ class ViewController: UIViewController {
 
         slider = UISlider(frame: CGRect(x: 0,
                                         y: 0,
-                                        width: screenWidth - (self.allTime?.frame.width)! - (self.currentTimes?.frame.width)!,
+                                        width: screenWidth - /*(self.allTime?.frame.width)!*/ 40 - /*(self.currentTimes?.frame.width)!*/ 40,
                                         height: 10))
         
         slider?.center = CGPoint(x: screenWidth * 0.5,

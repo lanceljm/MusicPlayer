@@ -38,7 +38,7 @@ class downloadMusicTableViewController: UITableViewController
         let enumeator:FileManager.DirectoryEnumerator! = fileManager.enumerator(atPath: path)
         
         /* 遍历目录 */
-        while let element       =   enumeator.nextObject() as? String {
+        while let element       =   enumeator?.nextObject() as? String {
             dataArray.append("\(element)")
         }
         tableView.reloadData()
