@@ -406,7 +406,12 @@ class ViewController: UIViewController {
     
     //MARK: -   改变UI
     func changeUI() {
-        
+        albumpic?.kf.setImage(with: URL(string:(songsQueue?.songAlbue)!))
+        self.songName?.text = songsQueue?.songName
+        self.allTime?.text = songsQueue?.songRemoinderFormatterTime
+        self.slider?.maximumValue = Float((self.songsQueue?.soundQueue?.getCurrentItem().duration)!)
+        self.playing = true
+        self.playBtn?.setImage(UIImage(named:"stop"), for: .normal)
     }
     
     
@@ -512,6 +517,20 @@ class ViewController: UIViewController {
         downloadWithMethon.startDownAtIndex(0)
     }
     
+    
+    //MARK: -   动画
+    func roundImageView( _ timer:Timer) {
+        let animal = CABasicAnimation(keyPath: "transform.rotation")
+        
+        animal.toValue = 2 * M_PI
+        animal.repeatCount = MAXFLOAT
+        animal.duration = 10
+        animal.isRemovedOnCompletion = false
+        
+        /* 把动画添加到图层上 */
+        albumpic?.layer.add(animal, forKey: nil)
+        
+    }
     
 
     override func didReceiveMemoryWarning() {

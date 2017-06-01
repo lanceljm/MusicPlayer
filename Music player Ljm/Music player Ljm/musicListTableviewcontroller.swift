@@ -28,7 +28,10 @@ class musicListTableviewcontroller: UITableViewController
         view.backgroundColor = .white
         title = "歌单"
         player = AFSoundPlayback()
+        
+        /* 注册cell */
         tableView.register(musicListCell.classForCoder(), forCellReuseIdentifier: identifier)
+        
         DispatchQueue.global().async {
             SongInfoController().getSongsModelWithTopID(topid: 26, completehandle: {
                 (songsModels , error) -> Void in

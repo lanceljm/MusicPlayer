@@ -38,7 +38,7 @@ class SongInfoController {
     
     //MARK: -   榜单信息
     func getSongsModelWithTopID(topid:Int , completehandle:@escaping ConvertModelCompleteModel) -> Void {
-        let url = "\(topListSongAPI)?topid=\(topid)&showapi_appid=\(showapi_appid)&showapi_sign=\(showapi_sign)&showapi_timestamp=\(currentTime)"
+        let url = "\(topListSongAPI)?topid=\(topid)&showapi_appid=\(showapi_appid)&showapi_sign=\(showapi_sign)"/*&showapi_timestamp=\(currentTime)*/
         
         networkingservice.getTopListMusicInfo(url, completeHondle: {(jsonData,error) -> Void in
         
