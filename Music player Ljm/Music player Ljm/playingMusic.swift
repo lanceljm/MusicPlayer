@@ -30,7 +30,7 @@ class playingMusic: NSObject {
     
     
     /* 当前播放模型 */
-    var playingSong     =       Songs(albumpic_big:nil , albumpic_small:nil , downUrl:nil , m4a:nil , songname:nil , song_id:nil, singername: nil)
+    var playingSong     =       Songs(albumpic_big:nil , albumpic_small:nil , downUrl:nil , m4a:nil , songname:nil , song_id:nil)//, singername: nil)
     
     
     

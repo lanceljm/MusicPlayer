@@ -147,7 +147,7 @@ class ViewController: UIViewController {
                                            width:screenWidth ,
                                            height:40),
                                     #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
-                                    #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1) ,
+                                    #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) ,
                                     18)
         
         songName?.center = CGPoint(
@@ -168,7 +168,7 @@ class ViewController: UIViewController {
                                              width: screenWidth * 0.5,
                                              height: screenWidth * 0.5))
         albumpic?.center = CGPoint(x: screenWidth * 0.5,
-                                   y: (self.songName?.frame.origin.y)! + (self.songName?.frame.height)! + screenWidth * 0.3)
+                                   y: (self.songName?.frame.origin.y)! + (self.songName?.frame.height)! + screenWidth * 0.4)
         albumpic?.image = UIImage(named:"playIcon")
         albumpic?.layer.cornerRadius = (self.albumpic?.frame.width)! * 0.5
         view.addSubview(albumpic!)
@@ -182,11 +182,12 @@ class ViewController: UIViewController {
 
         slider = UISlider(frame: CGRect(x: 0,
                                         y: 0,
-                                        width: screenWidth - /*(self.allTime?.frame.width)!*/ 40 - /*(self.currentTimes?.frame.width)!*/ 40,
-                                        height: 10))
+                                        width: screenWidth - /*(self.allTime?.frame.width)!*/ 60 - /*(self.currentTimes?.frame.width)!*/ 60,
+                                        height: 20))
         
         slider?.center = CGPoint(x: screenWidth * 0.5,
                                  y: self.view.frame.height * 0.5 + (self.albumpic?.frame.height)!)
+//        slider?.backgroundColor = .red
         slider?.value = 0
         slider?.maximumValue = 100
         slider?.setThumbImage(UIImage(named:"slider"), for: UIControlState.normal)
@@ -202,6 +203,7 @@ class ViewController: UIViewController {
         /* 改变 */
         slider?.addTarget(
             self, action: #selector(timeChange(_:)), for: .valueChanged)
+        view.addSubview(slider!)
         
         
         /*
@@ -210,12 +212,12 @@ class ViewController: UIViewController {
          *
          */
 
-        currentTimes = congfig.makeLabe(CGRect(x : 20 ,
+        currentTimes = congfig.makeLabe(CGRect(x : 0 ,
                                                y : (self.slider?.frame.origin.y)!,
-                                               width : 40 ,
+                                               width : 60 ,
                                                height : 20),
                                         #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
-                                        #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1),
+                                        #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
                                         12)
         currentTimes?.textAlignment = .right
         currentTimes?.text = "00:00"
@@ -228,7 +230,7 @@ class ViewController: UIViewController {
          */
 
         allTime = congfig.makeLabe(CGRect(
-                                        x : 20 + (self.currentTimes?.frame.width)! ,
+                                        x : (self.slider?.frame.width)! + (self.currentTimes?.frame.width)! ,
                                         y : (self.currentTimes?.frame.origin.y)! ,
                                         width: (self.currentTimes?.frame.width)! ,
                                         height : (self.currentTimes?.frame.height)!),
@@ -250,7 +252,7 @@ class ViewController: UIViewController {
                                             y : 0 ,
                                             width : 60 ,
                                             height : 60),
-                                     #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1),
+                                     #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
                                      30,
                                      "stop")
         playBtn?.center = CGPoint(x: screenWidth * 0.5,
@@ -267,12 +269,12 @@ class ViewController: UIViewController {
 
         upBtn = congfig.makeButton(CGRect(x : 0 ,
                                           y : 0 ,
-                                          width : 50 ,
-                                          height : 50),
-                                   #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1),
+                                          width : 40 ,
+                                          height : 40),
+                                   #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
                                    25,
                                    "up")
-        upBtn?.center = CGPoint(x: (self.playBtn?.frame.origin.x)! - (self.playBtn?.frame.width)!,
+        upBtn?.center = CGPoint(x: (self.playBtn?.frame.origin.x)! - (self.playBtn?.frame.width)! * 0.5,
                                 y: (self.playBtn?.center.y)!)
         upBtn?.tag = 101
         upBtn?.addTarget(self, action: #selector(nextorupWithMusic(btn:)), for: .touchUpInside)
@@ -286,11 +288,12 @@ class ViewController: UIViewController {
 
         nextBtn = congfig.makeButton(CGRect(x : 0 ,
                                             y : 0 ,
-                                            width : 50 ,
-                                            height : 50),
-                                     #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1),
+                                            width : (self.upBtn?.frame.width)! ,
+                                            height : (self.upBtn?.frame.height)!),
+                                     #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
                                      25,
                                      "next")
+        nextBtn?.center = CGPoint(x: (self.playBtn?.frame.origin.x)! + (self.playBtn?.frame.width)! * 1.5, y: (self.playBtn?.center.y)!)
         nextBtn?.addTarget(self, action: #selector(nextorupWithMusic(btn:)), for: .touchUpInside)
         nextBtn?.tag = 100
         view.addSubview(nextBtn!)
@@ -303,11 +306,11 @@ class ViewController: UIViewController {
          */
         playModelBtn = congfig.makeButton(CGRect(x : 0 ,
                                                  y : 0 ,
-                                                 width : 40 ,
-                                                 height : 40),
+                                                 width : 30 ,
+                                                 height : 30),
                                           #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1),
                                           0,
-                                          "list")
+                                          "one")
         playModelBtn?.center = CGPoint(x: (self.upBtn?.frame.origin.x)! - (self.upBtn?.frame.width)!,
                                        y: (self.upBtn?.center.y)!)
         playModelBtn?.addTarget(self, action: #selector(changPlayWithModel(btn:)), for: .touchUpInside)
@@ -325,7 +328,7 @@ class ViewController: UIViewController {
                                             height : (self.playModelBtn?.frame.height)!),
                                      #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1),
                                      0,
-                                     "comment")
+                                     "list")
         listBtn?.center = CGPoint(x: (self.nextBtn?.frame.origin.x)! + (self.nextBtn?.frame.width)! * 2,
                                   y: (self.nextBtn?.center.y)!)
         view.addSubview(listBtn!)
@@ -339,13 +342,14 @@ class ViewController: UIViewController {
          */
         likeBtn = congfig.makeButton(CGRect(x : 0 ,
                                             y : 0 ,
-                                            width : (self.playModelBtn?.frame.width)! ,
-                                            height : (self.playModelBtn?.frame.height)!),
+                                            width : 30,
+                                            height : 28),
                                      #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1),
                                      0,
                                      "like")
         likeBtn?.center = CGPoint(x: screenWidth / 5,
-                                  y: (self.playBtn?.frame.origin.y)! + (self.playBtn?.frame.height)! * 2)
+                                  y: (self.playBtn?.frame.origin.y)! + (self.playBtn?.frame.height)! * 1.5)
+        likeBtn?.addTarget(self, action: #selector(likeChangeImage(sender:)), for: .touchUpInside)
         view.addSubview(likeBtn!)
 
         
@@ -357,11 +361,11 @@ class ViewController: UIViewController {
          */
         downBtn = congfig.makeButton(CGRect(x : 0 ,
                                             y : 0 ,
-                                            width : (self.playModelBtn?.frame.width)! ,
-                                            height : (self.playModelBtn?.frame.height)!),
+                                            width : (self.likeBtn?.frame.width)! ,
+                                            height : (self.likeBtn?.frame.height)!),
                                      #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1),
                                      0,
-                                     "download")
+                                     "downmoad")
         downBtn?.center = CGPoint(x: screenWidth / 5 * 2, y: (self.likeBtn?.center.y)!)
         view.addSubview(downBtn!)
         
@@ -374,8 +378,8 @@ class ViewController: UIViewController {
          */
         shareBtn = congfig.makeButton(CGRect(x : 0 ,
                                              y : 0 ,
-                                             width : (self.playModelBtn?.frame.width)!,
-                                             height : (self.playModelBtn?.frame.height)!),
+                                             width : (self.likeBtn?.frame.width)!,
+                                             height : (self.likeBtn?.frame.height)!),
                                       #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1),
                                       0,
                                       "share")
@@ -391,8 +395,8 @@ class ViewController: UIViewController {
          */
         commentBtn = congfig.makeButton(CGRect(x : 0 ,
                                                y : 0 ,
-                                               width : (self.playModelBtn?.frame.width)! ,
-                                               height : (self.playModelBtn?.frame.height)!),
+                                               width : (self.likeBtn?.frame.width)! ,
+                                               height : (self.likeBtn?.frame.height)!),
                                         #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1),
                                         0,
                                         "comment")
@@ -529,6 +533,11 @@ class ViewController: UIViewController {
         
         /* 把动画添加到图层上 */
         albumpic?.layer.add(animal, forKey: nil)
+        
+    }
+    
+    //MARK: -   喜爱
+    func likeChangeImage(sender:UIButton) {
         
     }
     

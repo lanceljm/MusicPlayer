@@ -25,17 +25,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: screenBounds)
         let favorites = musicListTableviewcontroller(style: UITableViewStyle.plain)
         
-        favorites.title = "music";
+//        favorites.title = "music";
         
         let down = downloadMusicTableViewController(style: UITableViewStyle.plain)
-        
-        down.title = "down";
+        down.title = "下载列表";
         
         let favoritesNav = navigationcontroller(rootViewController: favorites)
-        favoritesNav.tabBarItem.image = UIImage(named: "music")
+        favoritesNav.tabBarItem.image = UIImage(named: "music")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        
+        favoritesNav.tabBarItem.selectedImage = UIImage(named: "musics")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         
         let downNav = navigationcontroller(rootViewController: down)
-        downNav.tabBarItem.image = UIImage(named: "down")
+        downNav.tabBarItem.image = UIImage(named: "down")?.withRenderingMode(.alwaysOriginal)
+        downNav.tabBarItem.selectedImage = UIImage(named: "downs")?.withRenderingMode(.alwaysOriginal)
         
         
         let tab = tabbarcontroller()

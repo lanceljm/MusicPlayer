@@ -17,7 +17,7 @@ class networktools : AFHTTPSessionManager
  
     /* 初始化工具类属性 */
     static let shared : networktools = {
-        let instance = networktools(baseURL: URL(string: baseURLString!))
+        let instance = networktools(baseURL:nil) //URL(string: baseURLString!))
         
         instance.responseSerializer.acceptableContentTypes?.insert("text/html")
         

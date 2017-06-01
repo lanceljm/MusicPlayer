@@ -38,16 +38,33 @@ class SongInfoController {
     
     //MARK: -   榜单信息
     func getSongsModelWithTopID(topid:Int , completehandle:@escaping ConvertModelCompleteModel) -> Void {
-        let url = "\(topListSongAPI)?topid=\(topid)&showapi_appid=\(showapi_appid)&showapi_sign=\(showapi_sign)"/*&showapi_timestamp=\(currentTime)*/
+        
+//        let parm = ["topid":topid,"showapi_appid":showapi_appid,"showapi_sign":showapi_sign,"showapi_timestamp":currentTime] as [String : Any]
+//        networktools.shared.request(url: topListSongAPI, parameters: parm) { (data, err) in
+//            if (err == nil) {
+//                print("歌单请求成功")
+//                print(data!)
+//            }else
+//            {
+//                print("歌单请求失败")
+//            }
+//        }
+        
+        
+        
+        let url = "\(topListSongAPI)?topid=\(topid)&showapi_appid=\(showapi_appid)&showapi_sign=\(showapi_sign)&showapi_timestamp=\(currentTime)"
         
         networkingservice.getTopListMusicInfo(url, completeHondle: {(jsonData,error) -> Void in
-        
+
             if let songlist = jsonData{
                 let songModels = self.convertJsonToModel(jsonData: songlist, m4aName: "url")
                 completehandle(songModels , error)
+                
+                print(songModels!)
             }else
             {
                 completehandle(nil , error)
+                print(error!)
             }
         
         })
@@ -58,16 +75,17 @@ class SongInfoController {
     
     //MARK: -   把json数组转换为模型数组
     func convertJsonToModel(jsonData:[JSON]! , m4aName:String!) -> [Songs]? {
+        
         var songs = [Songs]()
         
         for data in jsonData {
             let albumpic_big    =   data["albumpic_big"].string
             let albumpic_small  =   data["albumpic_small"].string
             let downUrl         =   data["downUrl"].string
-            let m4a             =   data["m4a"].string
+            let m4a             =   data[m4aName].string
             let songname        =   data["songname"].string
-            let song_id         =   data["song_id"].int
-            let singername      =   data["singername"].string
+            let songid         =   data["song_id"].int
+//            let singername      =   data["singername"].string
             
             
             if albumpic_big     != nil &&
@@ -75,16 +93,17 @@ class SongInfoController {
                 downUrl         != nil &&
                 m4a             != nil &&
                 songname        != nil &&
-                singername      != nil &&
-                song_id! > 0
+                songid! > 0
+                //                singername      != nil &&
+                
                 {
-                    let songModel = Songs(albumpic_big      :albumpic_big! ,
-                                          albumpic_small    :albumpic_small! ,
-                                          downUrl           : downUrl! ,
-                                          m4a               : m4a! ,
-                                          songname          : songname! ,
-                                          song_id           : song_id!,
-                                          singername        : singername!)
+                    let songModel = Songs(albumpic_big      :   albumpic_big! ,
+                                          albumpic_small    :   albumpic_small! ,
+                                          downUrl           :   downUrl! ,
+                                          m4a               :   m4a! ,
+                                          songname          :   songname! ,
+                                          song_id           :   songid!)
+//                                          singername        : singername!)
                     songs.append(songModel)
                     
             }
