@@ -93,7 +93,6 @@
 				1A34C3EC1ED8118C002EA9E2 /* AppDelegate.swift */,
 				1A1B601E1ED909ED000D488A /* navigationcontroller.swift */,
 				1A1B60201ED90BAA000D488A /* tabbarcontroller.swift */,
-				1A34C3EE1ED8118C002EA9E2 /* ViewController.swift */,
 				1A1B602F1ED9500D000D488A /* downloadMusic */,
 				1A1B602E1ED94F85000D488A /* playingMusic */,
 				1A1B60251ED91475000D488A /* musicList */,
@@ -131,6 +130,7 @@
 		1A1B602E1ED94F85000D488A /* playingMusic */ = {
 			isa = PBXGroup;
 			children = (
+				1A34C3EE1ED8118C002EA9E2 /* ViewController.swift */,
 			);
 			name = playingMusic;
 			sourceTree = "<group>";

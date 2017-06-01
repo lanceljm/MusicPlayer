@@ -14,7 +14,7 @@ import Masonry
 class ViewController: UIViewController {
 
     
-    static  let shared  = UIViewController()
+    static  let shared  = ViewController()
     
     /* 歌曲名 */
     private var songName    :   UILabel?
@@ -477,7 +477,7 @@ class ViewController: UIViewController {
         case 0:
             /* 列表循环 */
             playModel = playModels.ListSongCircle
-            playModelBtn?.setImage(UIImage(named:"list"), for: .normal)
+            playModelBtn?.setImage(UIImage(named:"circle"), for: .normal)
             break
             
         case 1:

@@ -19,7 +19,9 @@ class networkingservice: NSObject {
         
         
         let session: URLSessionTask = URLSession.shared.dataTask(with: URL(string: ecodeUrl!)!, completionHandler: {(data,response,error)->Void in
+            
             let json = JSON(data: data!)["showapi_res_body"]["pagebean"]["contentlist"].array
+            
             completeHondle(json,error)
         })
         

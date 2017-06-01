@@ -30,10 +30,51 @@ class musicListTableviewcontroller: UITableViewController
         player = AFSoundPlayback()
         tableView.register(musicListCell.classForCoder(), forCellReuseIdentifier: identifier)
         DispatchQueue.global().async {
-            
+            SongInfoController().getSongsModelWithTopID(topid: 26, completehandle: {
+                (songsModels , error) -> Void in
+                
+                if error != nil
+                {
+                    print("歌单请求成功")
+                }else
+                {
+                    DispatchQueue.main.async {
+                        if songsModels?.count == 0
+                        {
+                            congfig.showAlertVC(self, "提示", "歌单请求失败，请检查网络")
+                        }else
+                        {
+                            self.musicData = songsModels!
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+                
+            })
         }
         
     }
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let plays = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(goToPlayer))
+        
+        navigationItem.rightBarButtonItem = plays
+        
+    }
+    
+    
+    //MARK: -   action  goToPlayer
+    func goToPlayer() -> Void {
+        let player = ViewController.shared
+        player.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        navigationController?.pushViewController(player, animated: true)
+        
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -44,13 +85,45 @@ class musicListTableviewcontroller: UITableViewController
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return musicData.count
     }
+    
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! musicListCell
+        let songs = musicData[indexPath.row]
+        cell.musicImage?.kf.setImage(with: URL(string: songs.albumpic_small))
+        cell.musicName?.text = songs.songname
+        
+        return cell
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        /* 播放 */
+        let player = playingMusic.sharePlayingServiece
+        if player.songName != musicData[indexPath.row].songname {
+            player.songList = musicData
+            player.playMusicWitnIndex(indexPath.row)
+        }
+        
+        let plays = ViewController.shared
+        plays.view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        plays.playIndex = indexPath.row
+        navigationController?.pushViewController(plays, animated: true)
+        
+        
+    }
+    
+    
+    
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

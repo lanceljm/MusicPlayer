@@ -23,8 +23,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         window = UIWindow(frame: screenBounds)
+        let favorites = musicListTableviewcontroller(style: UITableViewStyle.plain)
+        
+        favorites.title = "music";
+        
+        let down = downloadMusicTableViewController(style: UITableViewStyle.plain)
+        
+        down.title = "down";
+        
+        let favoritesNav = navigationcontroller(rootViewController: favorites)
+        favoritesNav.tabBarItem.image = UIImage(named: "music")
+        
+        let downNav = navigationcontroller(rootViewController: down)
+        downNav.tabBarItem.image = UIImage(named: "down")
         
         
+        let tab = tabbarcontroller()
+        tab.addChildViewController(favoritesNav)
+        tab.addChildViewController(downNav)
+        
+        window?.rootViewController = tab
+        window?.makeKeyAndVisible()
         
         
         
@@ -54,6 +73,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    
+    
+    //MARK: -   core data stack
+    lazy var persistentContainer:NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Music")
+        container.loadPersistentStores(completionHandler: { (storeDescription , error) in
+            if let error = error as NSError?
+            {
+                fatalError("Unresolved error \(error) , \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    
+    //MARK: -   coar data saving
 
+    func saveContext() {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do{
+                try context.save()
+            }catch
+            {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror) , \(nserror.userInfo)")
+            }
+        }
+        
+    }
+    
 }
 
