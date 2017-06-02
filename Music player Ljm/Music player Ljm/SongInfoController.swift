@@ -59,12 +59,13 @@ class SongInfoController {
             if let songlist = jsonData{
                 let songModels = self.convertJsonToModel(jsonData: songlist, m4aName: "url")
                 completehandle(songModels , error)
-                
-                print(songModels!)
+                print("歌单请求成功")
+//                print(songModels!)
             }else
             {
                 completehandle(nil , error)
                 print(error!)
+                print("歌单请求失败")
             }
         
         })
@@ -84,29 +85,36 @@ class SongInfoController {
             let downUrl         =   data["downUrl"].string
             let m4a             =   data[m4aName].string
             let songname        =   data["songname"].string
-            let songid         =   data["song_id"].int
-//            let singername      =   data["singername"].string
+            let songid          =   data["songid"].int
+            let singername      =   data["singername"].string
             
-            
-            if albumpic_big     != nil &&
-                albumpic_small  != nil &&
-                downUrl         != nil &&
-                m4a             != nil &&
-                songname        != nil &&
-                songid! > 0
-                //                singername      != nil &&
-                
+            if let song = songid {
+                if
+                    albumpic_big    != nil &&
+                    albumpic_small  != nil &&
+                    downUrl         != nil &&
+                    m4a             != nil &&
+                    songname        != nil &&
+                    singername      != nil &&
+                    song > 0
+                    
+                    
                 {
                     let songModel = Songs(albumpic_big      :   albumpic_big! ,
                                           albumpic_small    :   albumpic_small! ,
                                           downUrl           :   downUrl! ,
                                           m4a               :   m4a! ,
                                           songname          :   songname! ,
-                                          song_id           :   songid!)
-//                                          singername        : singername!)
+                                          song_id           :   songid!,
+                                          singername        :   singername!)
+                    
                     songs.append(songModel)
                     
+                }
+
             }
+            
+//            
             
         }
         return songs

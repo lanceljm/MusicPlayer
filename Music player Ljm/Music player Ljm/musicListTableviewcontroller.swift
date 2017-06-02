@@ -96,12 +96,17 @@ class musicListTableviewcontroller: UITableViewController
         return musicData.count
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! musicListCell
         let songs = musicData[indexPath.row]
         cell.musicImage?.kf.setImage(with: URL(string: songs.albumpic_small))
         cell.musicName?.text = songs.songname
+        cell.musicAuthor?.text = songs.singername
         
         return cell
     }
@@ -118,7 +123,7 @@ class musicListTableviewcontroller: UITableViewController
         }
         
         let plays = ViewController.shared
-        plays.view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        plays.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         plays.playIndex = indexPath.row
         navigationController?.pushViewController(plays, animated: true)
         

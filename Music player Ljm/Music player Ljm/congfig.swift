@@ -125,7 +125,7 @@ class congfig {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(3))
         {
             
-            print("dismiss alertVC")
+//            print("dismiss alertVC")
             /* 提示框消失 */
             alertVC.dismiss(animated: true, completion: nil)
         }

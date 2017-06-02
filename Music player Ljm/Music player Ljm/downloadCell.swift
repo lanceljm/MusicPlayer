@@ -29,41 +29,51 @@ class downloadCell: UITableViewCell
     
     func setupUI()
     {
-        downImage = UIImageView()
-        addSubview(downImage!)
         
-        downImage?.snp.makeConstraints({ (make:ConstraintMaker) in
-            make.top.equalTo(10)
-            make.left.equalTo(10)
-            make.width.height.equalTo(40)
-        })
-        
-        
-        
-        downName = UILabel()
-        downName?.textAlignment = .center
+        downImage = UIImageView(frame: CGRect(x: 10, y: 5, width: 40, height: 40))
+        contentView.addSubview(downImage!)
+        downName = UILabel(frame: CGRect(x: 60, y: 5, width: screenWidth - 80, height: 25))
         downName?.textColor = .red
-        downName?.font = UIFont.systemFont(ofSize: 15)
-        addSubview(downName!)
+        downName?.font = UIFont.systemFont(ofSize: 14)
+        contentView.addSubview(downName!)
+        downProgress = UIProgressView(frame: CGRect(x: 60, y: 30, width: screenWidth - 120, height: 10))
+        contentView.addSubview(downProgress!)
         
-        downName?.snp.makeConstraints({ (make:ConstraintMaker) in
-            make.top.equalTo(self.downImage?.mas_top as! ConstraintRelatableTarget)
-            make.left.equalTo(self.downImage?.mas_right as! ConstraintRelatableTarget).offset(10)
-            make.width.equalTo(screenWidth - 80)
-            make.height.equalTo(25)
-        })
-        
-        
-        downProgress = UIProgressView()
-        downProgress?.backgroundColor = .green
-        addSubview(downProgress!)
-        
-        downProgress?.snp.makeConstraints({ (make:ConstraintMaker) in
-            make.top.equalTo(self.downName?.mas_bottom as! ConstraintRelatableTarget).offset(5)
-            make.left.equalTo(self.downName?.mas_left as! ConstraintRelatableTarget)
-            make.width.equalTo(screenWidth - 120)
-            make.height.equalTo(10)
-        })
+//        downImage = UIImageView()
+//        addSubview(downImage!)
+//        
+//        downImage?.snp.makeConstraints({ (make:ConstraintMaker) in
+//            make.top.equalTo(10)
+//            make.left.equalTo(10)
+//            make.width.height.equalTo(40)
+//        })
+//        
+//        
+//        
+//        downName = UILabel()
+//        downName?.textAlignment = .center
+//        downName?.textColor = .red
+//        downName?.font = UIFont.systemFont(ofSize: 15)
+//        addSubview(downName!)
+//        
+//        downName?.snp.makeConstraints({ (make:ConstraintMaker) in
+//            make.top.equalTo(self.downImage?.mas_top as! ConstraintRelatableTarget)
+//            make.left.equalTo(self.downImage?.mas_right as! ConstraintRelatableTarget).offset(10)
+//            make.width.equalTo(screenWidth - 80)
+//            make.height.equalTo(25)
+//        })
+//        
+//        
+//        downProgress = UIProgressView()
+//        downProgress?.backgroundColor = .green
+//        addSubview(downProgress!)
+//        
+//        downProgress?.snp.makeConstraints({ (make:ConstraintMaker) in
+//            make.top.equalTo(self.downName?.mas_bottom as! ConstraintRelatableTarget).offset(5)
+//            make.left.equalTo(self.downName?.mas_left as! ConstraintRelatableTarget)
+//            make.width.equalTo(screenWidth - 120)
+//            make.height.equalTo(10)
+//        })
         
     }
     

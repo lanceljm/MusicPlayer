@@ -20,6 +20,10 @@ class ViewController: UIViewController {
     private var songName    :   UILabel?
     
     
+    /* 歌手名 */
+    private var singerName  :   UILabel?
+    
+    
     /* 专辑图片 */
     private var albumpic    :   UIImageView?
     
@@ -91,6 +95,9 @@ class ViewController: UIViewController {
     /* 播放队列 */
     public var songsQueue  :   playingMusic?
     
+    
+    
+    private var pickerView  :   UIPickerView?
 
     
     
@@ -122,6 +129,10 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         tabBarController?.tabBar.isHidden = true
+        
+//        var backImage = UIImageView(frame: screenBounds)
+//        backImage = UIImage(named: <#T##String#>)
+        
     }
     
     //MARK: -   视图即将消失时让状态栏出现
@@ -154,7 +165,25 @@ class ViewController: UIViewController {
             x: screenWidth * 0.5,
             y: /*(self.navigationController?.navigationBar.frame.height)!*/ 64 + 40)
         songName?.textAlignment = .center
+//        songName?.text = "罗加明"
         view.addSubview(songName!)
+        
+        /*
+         *
+         *  歌手名
+         *
+         */
+        singerName = congfig.makeLabe(CGRect(x:0,
+                                             y:0,
+                                             width:screenWidth,
+                                             height:40),
+                                      #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1),
+                                      #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
+                                      16)
+        singerName?.center = CGPoint(x: screenWidth * 0.5,
+                                     y: (songName?.frame.origin.y)! + (songName?.frame.size.height)! * 1.5)
+        singerName?.textAlignment = .center
+        view.addSubview(singerName!)
         
         
         /*
@@ -367,6 +396,7 @@ class ViewController: UIViewController {
                                      0,
                                      "downmoad")
         downBtn?.center = CGPoint(x: screenWidth / 5 * 2, y: (self.likeBtn?.center.y)!)
+        downBtn?.addTarget(self, action: #selector(downLoadWithMusic(btn:)), for: .touchUpInside)
         view.addSubview(downBtn!)
         
         
@@ -412,6 +442,7 @@ class ViewController: UIViewController {
     func changeUI() {
         albumpic?.kf.setImage(with: URL(string:(songsQueue?.songAlbue)!))
         self.songName?.text = songsQueue?.songName
+        self.singerName?.text = songsQueue?.singerName
         self.allTime?.text = songsQueue?.songRemoinderFormatterTime
         self.slider?.maximumValue = Float((self.songsQueue?.soundQueue?.getCurrentItem().duration)!)
         self.playing = true
@@ -420,17 +451,20 @@ class ViewController: UIViewController {
     
     
     //MARK: -   点击进度条相应的方法
+    /* 开始播放 */
     func beginChange( _ slider:UISlider) {
         songsQueue?.soundQueue?.pause()
         
-        playBtn?.setImage(UIImage(named:"paly"), for: .normal)
+        playBtn?.setImage(UIImage(named:"play"), for: .normal)
     }
     
+    /* 结束播放 */
     func endChange( _ slider:UISlider) {
         songsQueue?.seekToCurrentSlider(Int(slider.value))
         playBtn?.setImage(UIImage(named:"stop"), for: .normal)
     }
     
+    /* 拖动进度条改变时间 */
     func timeChange( _ slider:UISlider) {
         self.currentTimes?.text = makeTime(Int(slider.value))
     }
@@ -442,7 +476,7 @@ class ViewController: UIViewController {
         {
             songsQueue?.soundQueue?.pause()
             playing = false
-            playBtn?.setImage(UIImage(named:"paly"), for: .normal)
+            playBtn?.setImage(UIImage(named:"play"), for: .normal)
             
         }else
         {

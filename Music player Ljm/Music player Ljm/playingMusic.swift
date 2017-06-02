@@ -30,7 +30,7 @@ class playingMusic: NSObject {
     
     
     /* 当前播放模型 */
-    var playingSong     =       Songs(albumpic_big:nil , albumpic_small:nil , downUrl:nil , m4a:nil , songname:nil , song_id:nil)//, singername: nil)
+    var playingSong     =       Songs(albumpic_big:nil , albumpic_small:nil , downUrl:nil , m4a:nil , songname:nil , song_id:nil , singername: nil)
     
     
     
@@ -42,6 +42,12 @@ class playingMusic: NSObject {
     
     /* 歌曲名 */
     var songName                    :       String!
+    
+    
+    
+    /* 歌手名 */
+    var singerName                  :       String!
+    
     
     
     
@@ -126,7 +132,8 @@ class playingMusic: NSObject {
         let currentIndex            =       getCurrentIndex(songIndex)
         playingSong                 =       songList[currentIndex]
         self    .   songName        =       playingSong.songname
-        self    .   songAlbue       =       playingSong.albumpic_big
+        self    .   singerName      =       playingSong.singername
+        self    .   songAlbue       =       playingSong.albumpic_small
         let item                    =       AFSoundItem(streamingURL: URL(string: playingSong.m4a))
         self    .   songDuration    =       "\((item?.duration)!)"
         

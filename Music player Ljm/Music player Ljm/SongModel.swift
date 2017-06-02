@@ -17,7 +17,7 @@ public  struct  Songs
     let m4a             :   String!
     let songname        :   String!
     let song_id         :   Int!
-//    let singername      :   String!
+    let singername      :   String!
     
 }
 
