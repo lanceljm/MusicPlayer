@@ -107,7 +107,7 @@ class musicListTableviewcontroller: UITableViewController
         cell.musicImage?.kf.setImage(with: URL(string: songs.albumpic_small))
         cell.musicName?.text = songs.songname
         cell.musicAuthor?.text = songs.singername
-        cell.backgroundImage?.kf.setImage(with: URL(string: songs.albumpic_big))
+//        cell.backgroundImage?.kf.setImage(with: URL(string: songs.albumpic_big))
         return cell
     }
     
