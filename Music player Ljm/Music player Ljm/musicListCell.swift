@@ -16,6 +16,9 @@ class musicListCell: UITableViewCell {
     public var musicImage   :   UIImageView?
     public var musicName    :   UILabel?
     public var musicAuthor  :   UILabel?
+    
+    /* 背景图片 */
+    public  var backgroundImage :   UIImageView?
 
     
     

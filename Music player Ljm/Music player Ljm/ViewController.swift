@@ -147,6 +147,23 @@ class ViewController: UIViewController {
     //MARK: -   设计UI
     func setupUI() {
         
+        /* 首先，设置背景图片 */
+        let backImage = UIImageView(frame: screenBounds)
+        backImage.image = UIImage(named: "bgtest")
+        
+        
+        //首先创建一个模糊效果
+        let blurEffect = UIBlurEffect(style: .light)
+    
+        //接着创建一个承载模糊效果的视图
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        //设置模糊视图的大小（全屏）
+        blurView.frame = screenBounds
+        //添加模糊视图到页面view上（模糊视图下方都会有模糊效果）
+        backImage.addSubview(blurView)
+        
+        view.addSubview(backImage)
+        
         /*
          *
          *  歌曲名
@@ -158,7 +175,7 @@ class ViewController: UIViewController {
                                            width:screenWidth ,
                                            height:40),
                                     #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
-                                    #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) ,
+                                    .clear ,
                                     18)
         
         songName?.center = CGPoint(
@@ -178,7 +195,7 @@ class ViewController: UIViewController {
                                              width:screenWidth,
                                              height:40),
                                       #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1),
-                                      #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
+                                      .clear ,
                                       16)
         singerName?.center = CGPoint(x: screenWidth * 0.5,
                                      y: (songName?.frame.origin.y)! + (songName?.frame.size.height)! * 1.5)
@@ -246,7 +263,7 @@ class ViewController: UIViewController {
                                                width : 60 ,
                                                height : 20),
                                         #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
-                                        #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
+                                        .clear ,
                                         12)
         currentTimes?.textAlignment = .right
         currentTimes?.text = "00:00"
@@ -281,7 +298,7 @@ class ViewController: UIViewController {
                                             y : 0 ,
                                             width : 60 ,
                                             height : 60),
-                                     #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
+                                     .clear ,
                                      30,
                                      "stop")
         playBtn?.center = CGPoint(x: screenWidth * 0.5,
@@ -300,7 +317,7 @@ class ViewController: UIViewController {
                                           y : 0 ,
                                           width : 40 ,
                                           height : 40),
-                                   #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
+                                   .clear ,
                                    25,
                                    "up")
         upBtn?.center = CGPoint(x: (self.playBtn?.frame.origin.x)! - (self.playBtn?.frame.width)! * 0.5,
@@ -319,7 +336,7 @@ class ViewController: UIViewController {
                                             y : 0 ,
                                             width : (self.upBtn?.frame.width)! ,
                                             height : (self.upBtn?.frame.height)!),
-                                     #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
+                                     .clear ,
                                      25,
                                      "next")
         nextBtn?.center = CGPoint(x: (self.playBtn?.frame.origin.x)! + (self.playBtn?.frame.width)! * 1.5, y: (self.playBtn?.center.y)!)
@@ -337,7 +354,7 @@ class ViewController: UIViewController {
                                                  y : 0 ,
                                                  width : 30 ,
                                                  height : 30),
-                                          #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1),
+                                          .clear ,
                                           0,
                                           "one")
         playModelBtn?.center = CGPoint(x: (self.upBtn?.frame.origin.x)! - (self.upBtn?.frame.width)!,
@@ -355,7 +372,7 @@ class ViewController: UIViewController {
                                             y : 0 ,
                                             width : (self.playModelBtn?.frame.width)! ,
                                             height : (self.playModelBtn?.frame.height)!),
-                                     #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1),
+                                     .clear ,
                                      0,
                                      "list")
         listBtn?.center = CGPoint(x: (self.nextBtn?.frame.origin.x)! + (self.nextBtn?.frame.width)! * 2,
@@ -373,7 +390,7 @@ class ViewController: UIViewController {
                                             y : 0 ,
                                             width : 30,
                                             height : 28),
-                                     #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1),
+                                     .clear ,
                                      0,
                                      "like")
         likeBtn?.center = CGPoint(x: screenWidth / 5,
@@ -392,7 +409,7 @@ class ViewController: UIViewController {
                                             y : 0 ,
                                             width : (self.likeBtn?.frame.width)! ,
                                             height : (self.likeBtn?.frame.height)!),
-                                     #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1),
+                                     .clear ,
                                      0,
                                      "downmoad")
         downBtn?.center = CGPoint(x: screenWidth / 5 * 2, y: (self.likeBtn?.center.y)!)
@@ -410,7 +427,7 @@ class ViewController: UIViewController {
                                              y : 0 ,
                                              width : (self.likeBtn?.frame.width)!,
                                              height : (self.likeBtn?.frame.height)!),
-                                      #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1),
+                                      .clear ,
                                       0,
                                       "share")
         shareBtn?.center = CGPoint(x: screenWidth / 5 * 3, y: (self.likeBtn?.center.y)!)
@@ -427,7 +444,7 @@ class ViewController: UIViewController {
                                                y : 0 ,
                                                width : (self.likeBtn?.frame.width)! ,
                                                height : (self.likeBtn?.frame.height)!),
-                                        #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1),
+                                        .clear ,
                                         0,
                                         "comment")
         commentBtn?.center = CGPoint(x: screenWidth / 5 * 4, y: (self.likeBtn?.center.y)!)
@@ -442,7 +459,7 @@ class ViewController: UIViewController {
     func changeUI() {
         albumpic?.kf.setImage(with: URL(string:(songsQueue?.songAlbue)!))
         self.songName?.text = songsQueue?.songName
-        self.singerName?.text = songsQueue?.singerName
+        self.singerName?.text = "--\(songsQueue?.singerName ?? "罗加明")--"
         self.allTime?.text = songsQueue?.songRemoinderFormatterTime
         self.slider?.maximumValue = Float((self.songsQueue?.soundQueue?.getCurrentItem().duration)!)
         self.playing = true
