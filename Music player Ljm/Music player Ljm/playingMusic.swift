@@ -51,7 +51,7 @@ class playingMusic: NSObject {
     
     
     
-    /* 专辑封面 */
+    /* 专辑小封面 */
     var songAlbue                   :       String!
     
     
@@ -81,6 +81,11 @@ class playingMusic: NSObject {
     
     /* 播放模式 */
     var playModel:playModels!   =       playModels.ListSongCircle//列表循环
+    
+    
+
+     /* 背景图片 */
+    var backGroundImage             :       String!
     
     
     
@@ -134,6 +139,7 @@ class playingMusic: NSObject {
         self    .   songName        =       playingSong.songname
         self    .   singerName      =       playingSong.singername
         self    .   songAlbue       =       playingSong.albumpic_small
+        self    .   backGroundImage =       playingSong.albumpic_big
         let item                    =       AFSoundItem(streamingURL: URL(string: playingSong.m4a))
         self    .   songDuration    =       "\((item?.duration)!)"
         

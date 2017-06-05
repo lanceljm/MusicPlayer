@@ -96,9 +96,11 @@ class ViewController: UIViewController {
     public var songsQueue  :   playingMusic?
     
     
+     /* 背景图片 */
+    public  var backImage   :   UIImageView?
+    
     
     private var pickerView  :   UIPickerView?
-
     
     
     
@@ -133,6 +135,7 @@ class ViewController: UIViewController {
 //        var backImage = UIImageView(frame: screenBounds)
 //        backImage = UIImage(named: <#T##String#>)
         
+        
     }
     
     //MARK: -   视图即将消失时让状态栏出现
@@ -148,8 +151,8 @@ class ViewController: UIViewController {
     func setupUI() {
         
         /* 首先，设置背景图片 */
-        let backImage = UIImageView(frame: screenBounds)
-        backImage.image = UIImage(named: "bgtest")
+        backImage = UIImageView(frame: screenBounds)
+//        backImage.image = UIImage(named: "bgtest")
         
         
         //首先创建一个模糊效果
@@ -160,9 +163,9 @@ class ViewController: UIViewController {
         //设置模糊视图的大小（全屏）
         blurView.frame = screenBounds
         //添加模糊视图到页面view上（模糊视图下方都会有模糊效果）
-        backImage.addSubview(blurView)
+        backImage?.addSubview(blurView)
         
-        view.addSubview(backImage)
+        view.addSubview(backImage!)
         
         /*
          *
@@ -222,7 +225,7 @@ class ViewController: UIViewController {
         
         /*
          *
-         *  进度条
+         *  歌曲时间进度条
          *
          */
 
@@ -458,6 +461,7 @@ class ViewController: UIViewController {
     //MARK: -   改变UI
     func changeUI() {
         albumpic?.kf.setImage(with: URL(string:(songsQueue?.songAlbue)!))
+        backImage?.kf.setImage(with: URL(string: (songsQueue?.backGroundImage)!))
         self.songName?.text = songsQueue?.songName
         self.singerName?.text = "--\(songsQueue?.singerName ?? "罗加明")--"
         self.allTime?.text = songsQueue?.songRemoinderFormatterTime
