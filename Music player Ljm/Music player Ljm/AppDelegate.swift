@@ -15,6 +15,15 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    
+    /*
+     *
+     *   后台任务
+     *
+     */
+//    var backGroundTask:UIBackgroundTaskIdentifier! = nil
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -57,10 +66,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
-
+    
+    
+    
+    
+    //MARK: - 程序进入后台
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+//        let controller = self.window?.rootViewController as! ViewController
+        
+         //MARK:- 如果后台存在任务，先将后台任务完成
+//        if self.backGroundTask != nil {
+//            application.endBackgroundTask(self.backGroundTask)
+//            self.backGroundTask = UIBackgroundTaskInvalid
+//        }else
+//        {
+//            
+//            self.backGroundTask = application.beginBackgroundTask(expirationHandler: {
+//                
+//                application.endBackgroundTask(self.backGroundTask)
+//                self.backGroundTask = UIBackgroundTaskInvalid
+//            })
+//        }
+        
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

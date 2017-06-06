@@ -63,7 +63,8 @@ class musicListTableviewcontroller: UITableViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let plays = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(goToPlayer))
+//        let plays = UIBarButtonItem(barButtonSystemItem: .rewind, target: self, action: #selector(goToPlayer))
+        let plays = UIBarButtonItem(title: "播放", style: .plain, target: self, action: #selector(goToPlayer))
         
         navigationItem.rightBarButtonItem = plays
         
@@ -73,8 +74,9 @@ class musicListTableviewcontroller: UITableViewController
     //MARK: -   action  goToPlayer
     func goToPlayer() -> Void {
         let player = ViewController.shared
-        player.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        navigationController?.pushViewController(player, animated: true)
+        player.view.backgroundColor = .clear
+//        navigationController?.pushViewController(player, animated: true)
+        self.present(player, animated: true, completion: nil)
         
     }
     
