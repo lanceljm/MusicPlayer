@@ -481,12 +481,13 @@ class ViewController: UIViewController {
     
     /* 结束播放 */
     func endChange( _ slider:UISlider) {
-        songsQueue?.seekToCurrentSlider(Int(slider.value))
+//        songsQueue?.seekToCurrentSlider(Int(slider.value))
         playBtn?.setImage(UIImage(named:"stop"), for: .normal)
     }
     
     /* 拖动进度条改变时间 */
     func timeChange( _ slider:UISlider) {
+        songsQueue?.seekToCurrentSlider(Int(slider.value))
         self.currentTimes?.text = makeTime(Int(slider.value))
     }
     
