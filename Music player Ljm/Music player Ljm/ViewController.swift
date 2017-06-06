@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 import AFSoundManager
-import Masonry
+
 
 class ViewController: UIViewController {
 
@@ -136,7 +136,7 @@ class ViewController: UIViewController {
 //        backImage = UIImage(named: <#T##String#>)
 //        var image = UIImage(named: "uplist")
     
-        let leftBtn = UIButton(frame: CGRect(x: screenWidth * 0.05, y: screenHeight * 0.03, width: 25, height: 25))
+        let leftBtn = UIButton(frame: CGRect(x: screenWidth * 0.05, y: screenHeight * 0.05, width: 25, height: 25))
         leftBtn.setImage(UIImage(named:"uplist"), for: .normal)
         leftBtn.backgroundColor = .clear
         leftBtn.addTarget(self, action: #selector(dismissWithCurrentVC), for: .touchUpInside)
@@ -192,7 +192,7 @@ class ViewController: UIViewController {
         
         songName?.center = CGPoint(
             x: screenWidth * 0.5,
-            y: /*(self.navigationController?.navigationBar.frame.height)!*/ 64 + 40)
+            y: /*(self.navigationController?.navigationBar.frame.height)!*/ 64 + 30)
         songName?.textAlignment = .center
 //        songName?.text = "罗加明"
         view.addSubview(songName!)
@@ -226,9 +226,10 @@ class ViewController: UIViewController {
                                              width: screenWidth * 0.5,
                                              height: screenWidth * 0.5))
         albumpic?.center = CGPoint(x: screenWidth * 0.5,
-                                   y: (self.songName?.frame.origin.y)! + (self.songName?.frame.height)! + screenWidth * 0.4)
+                                   y: (self.songName?.frame.origin.y)! + (self.songName?.frame.height)! + screenWidth * 0.45)
         albumpic?.image = UIImage(named:"playIcon")
-        albumpic?.layer.cornerRadius = (self.albumpic?.frame.width)! * 0.5
+//        albumpic?.layer.cornerRadius = (self.albumpic?.frame.width)! * 0.5
+//        albumpic?.layer.masksToBounds = true
         view.addSubview(albumpic!)
         
         
@@ -465,6 +466,14 @@ class ViewController: UIViewController {
 
         view.addSubview(commentBtn!)
         
+        
+        /*
+         *
+         *   设置锁屏状态的播放界面
+         *
+         */
+//        self.setLockView()
+        
     }
     
     
@@ -625,6 +634,22 @@ class ViewController: UIViewController {
     func dismissWithCurrentVC() {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+//    func setLockView(){
+//        let images = albumpic?.kf.setImage(with: URL(string:(songsQueue?.songAlbue)!))
+//        
+//        MPNowPlayingInfoCenter.default().nowPlayingInfo = [
+//            MPMediaItemPropertyTitle:"成都",
+//            MPMediaItemPropertyArtist:"- 罗加明 -",
+//            MPMediaItemPropertyArtwork:MPMediaItemArtwork(images!),
+//            MPNowPlayingInfoPropertyPlaybackRate:1.0,
+//            MPMediaItemPropertyPlaybackDuration:songsQueue?.songRemoinderFormatterTime,
+//            MPNowPlayingInfoPropertyElapsedPlaybackTime:songsQueue?.soundQueue?.getCurrentItem().duration
+//        ]
+//    }
+//    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
