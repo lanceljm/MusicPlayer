@@ -22,12 +22,25 @@ class musicListTableviewcontroller: UITableViewController
     var musicData = [Songs]()
     
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
+//        tableView.backgroundColor = .clear
+//        /* 设置背景图片 */
+//        let bgImage = UIImageView()
+//        bgImage.frame = screenBounds
+//        bgImage.image = UIImage(named: "bg")
+//        view.addSubview(bgImage)
+//        
+//        
+//        view.addSubview(self.tableView)
         title = "歌单"
         player = AFSoundPlayback()
+        tableView.separatorColor = .clear
         
         /* 注册cell */
         tableView.register(musicListCell.classForCoder(), forCellReuseIdentifier: identifier)
@@ -68,6 +81,7 @@ class musicListTableviewcontroller: UITableViewController
         
         navigationItem.rightBarButtonItem = plays
         
+        
     }
     
     
@@ -106,6 +120,9 @@ class musicListTableviewcontroller: UITableViewController
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! musicListCell
         let songs = musicData[indexPath.row]
+        cell.backgroundColor = .clear
+//        cell.accessoryType = .none
+        
         cell.musicImage?.kf.setImage(with: URL(string: songs.albumpic_small))
         cell.musicName?.text = songs.songname
         cell.musicAuthor?.text = songs.singername

@@ -32,6 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         window = UIWindow(frame: screenBounds)
+        /* 设置背景图片 */
+        let bgImage = UIImageView()
+        bgImage.frame = screenBounds
+        bgImage.image = UIImage(named: "bg")
+//        view.addSubview(bgImage)
+        window?.addSubview(bgImage)
+        
+        
         let favorites = musicListTableviewcontroller(style: UITableViewStyle.plain)
         
 //        favorites.title = "music";

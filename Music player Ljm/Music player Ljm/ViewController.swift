@@ -249,6 +249,11 @@ class ViewController: UIViewController {
 //        slider?.backgroundColor = .red
         slider?.value = 0
         slider?.maximumValue = 100
+//        slider?.thumbTintColor = .green
+        
+        /* 设置滑条相关的颜色 */
+        slider?.maximumTrackTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        slider?.minimumTrackTintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         slider?.setThumbImage(UIImage(named:"slider"), for: UIControlState.normal)
         
         /* 开始 */
