@@ -209,7 +209,6 @@ class playingMusic: NSObject {
                 
                 self.playWithNext()
                 
-            
                 ////////////////////////////////////////////////////////////////
                 
                 
@@ -287,8 +286,7 @@ class playingMusic: NSObject {
     func seekToCurrentSlider( _ second:Int) {
         soundQueue?.playItem(at: second)
         soundQueue?.playCurrentItem()
-        
-        
+    
         //////////////////////////////////////////////////////////////////
         
         

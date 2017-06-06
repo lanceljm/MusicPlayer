@@ -134,6 +134,13 @@ class ViewController: UIViewController {
         
 //        var backImage = UIImageView(frame: screenBounds)
 //        backImage = UIImage(named: <#T##String#>)
+//        var image = UIImage(named: "uplist")
+    
+        let leftBtn = UIButton(frame: CGRect(x: screenWidth * 0.05, y: screenHeight * 0.03, width: 25, height: 25))
+        leftBtn.setImage(UIImage(named:"uplist"), for: .normal)
+        leftBtn.backgroundColor = .clear
+        leftBtn.addTarget(self, action: #selector(dismissWithCurrentVC), for: .touchUpInside)
+        view.addSubview(leftBtn)
         
         
     }
@@ -143,6 +150,8 @@ class ViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         tabBarController?.tabBar.isHidden = false
+        
+        likeBtn?.setImage(UIImage(named:"like"), for: .normal)
     }
     
     
@@ -380,6 +389,7 @@ class ViewController: UIViewController {
                                      "list")
         listBtn?.center = CGPoint(x: (self.nextBtn?.frame.origin.x)! + (self.nextBtn?.frame.width)! * 2,
                                   y: (self.nextBtn?.center.y)!)
+        listBtn?.addTarget(self, action: #selector(songsWithlist), for: .touchUpInside)
         view.addSubview(listBtn!)
 
         
@@ -398,6 +408,7 @@ class ViewController: UIViewController {
                                      "like")
         likeBtn?.center = CGPoint(x: screenWidth / 5,
                                   y: (self.playBtn?.frame.origin.y)! + (self.playBtn?.frame.height)! * 1.5)
+        likeBtn?.tag = 1
         likeBtn?.addTarget(self, action: #selector(likeChangeImage(sender:)), for: .touchUpInside)
         view.addSubview(likeBtn!)
 
@@ -594,10 +605,27 @@ class ViewController: UIViewController {
     
     //MARK: -   喜爱
     func likeChangeImage(sender:UIButton) {
-        
+        if sender.tag == 1 {
+            likeBtn?.setImage(UIImage(named:"likes"), for: .normal)
+            sender.tag = sender.tag - 1
+        }else
+        {
+            likeBtn?.setImage(UIImage(named:"like"), for: .normal)
+            sender.tag = sender.tag + 1
+        }
     }
     
+    
+    //MARK: -   播放列表
+    func songsWithlist() {
+        self.dismiss(animated: true, completion: nil)
+    }
 
+    //MARK: -   返回
+    func dismissWithCurrentVC() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

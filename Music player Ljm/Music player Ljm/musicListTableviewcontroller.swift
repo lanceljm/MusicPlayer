@@ -125,7 +125,8 @@ class musicListTableviewcontroller: UITableViewController
         let plays = ViewController.shared
         plays.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         plays.playIndex = indexPath.row
-        navigationController?.pushViewController(plays, animated: true)
+//        navigationController?.pushViewController(plays, animated: true)
+        self.present(plays, animated: true, completion: nil)
         
         
     }
