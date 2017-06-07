@@ -83,7 +83,7 @@ class musicListCell: UITableViewCell {
         musicName = UILabel()
 //        musicName?.backgroundColor = .red
 //        musicName = UILabel(frame: CGRect(x: 60, y: 0, width: screenWidth - 70, height: 50))
-        musicName?.textColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+        musicName?.textColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         musicName?.textAlignment = .left
 //        musicName?.font = UIFont.systemFont(ofSize: 14)
 

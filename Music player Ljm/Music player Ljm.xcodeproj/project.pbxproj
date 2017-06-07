@@ -95,7 +95,6 @@
 				1A1B60201ED90BAA000D488A /* tabbarcontroller.swift */,
 				1A1B602F1ED9500D000D488A /* downloadMusic */,
 				1A1B602E1ED94F85000D488A /* playingMusic */,
-				1A1B60251ED91475000D488A /* musicList */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -181,11 +180,12 @@
 		1A34C3EB1ED8118C002EA9E2 /* Music player Ljm */ = {
 			isa = PBXGroup;
 			children = (
+				1A1B601D1ED90995000D488A /* ViewController */,
+				1A1B60251ED91475000D488A /* musicList */,
 				1A1B603B1ED97347000D488A /* network */,
 				1A1B60341ED95AC1000D488A /* helpers */,
 				1A1B602D1ED94F55000D488A /* function */,
 				1A1B60281ED9164F000D488A /* view */,
-				1A1B601D1ED90995000D488A /* ViewController */,
 				1A1B60181ED83297000D488A /* model */,
 				1A34C3FE1ED818DB002EA9E2 /* config */,
 				1A34C3F01ED8118C002EA9E2 /* Main.storyboard */,

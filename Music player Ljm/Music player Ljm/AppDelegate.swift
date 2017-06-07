@@ -38,10 +38,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         bgImage.image = UIImage(named: "bg")
 //        bgImage.alpha = 0.6
 //        view.addSubview(bgImage)
+//        window?.addSubview(bgImage)
+        
+        /*
+         *
+         *  设置图片背景的模糊效果
+         *
+         */
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = CGRect(x: 0,
+                                y: 0,
+                                width: screenWidth,
+                                height: screenMaxY - 64 - UIApplication.shared.statusBarFrame.height)
+        bgImage.addSubview(blurView)
         window?.addSubview(bgImage)
+
         
         
-        let favorites = musicListTableviewcontroller(style: UITableViewStyle.plain)
+//        let favorites = musicListTableviewcontroller(style: UITableViewStyle.plain)
+        let favorites = musicListTableviewcontroller()
+        
         
 //        favorites.title = "music";
         

@@ -15,11 +15,16 @@ private let identifier = "cell"
 public var player:AFSoundPlayback?
 
 
-class musicListTableviewcontroller: UITableViewController
+class musicListTableviewcontroller:
+    UIViewController,
+    UITableViewDelegate,UITableViewDataSource
+//    UIPickerViewDelegate,UIPickerViewDataSource
 {
 
+    var myTableview:UITableView?
     
     var musicData = [Songs]()
+//    var myPickerView:UIPickerView!
     
     
     
@@ -29,21 +34,11 @@ class musicListTableviewcontroller: UITableViewController
         super.viewDidLoad()
 
         view.backgroundColor = .clear
-//        tableView.backgroundColor = .clear
-//        /* 设置背景图片 */
-//        let bgImage = UIImageView()
-//        bgImage.frame = screenBounds
-//        bgImage.image = UIImage(named: "bg")
-//        view.addSubview(bgImage)
-//        
-//        
-//        view.addSubview(self.tableView)
+
         title = "歌单"
         player = AFSoundPlayback()
-        tableView.separatorColor = .clear
         
-        /* 注册cell */
-        tableView.register(musicListCell.classForCoder(), forCellReuseIdentifier: identifier)
+        self.setupUI()
         
         DispatchQueue.global().async {
             SongInfoController().getSongsModelWithTopID(topid: 26, completehandle: {
@@ -61,7 +56,7 @@ class musicListTableviewcontroller: UITableViewController
                         }else
                         {
                             self.musicData = songsModels!
-                            self.tableView.reloadData()
+                            self.myTableview?.reloadData()
                         }
                     }
                 }
@@ -71,6 +66,23 @@ class musicListTableviewcontroller: UITableViewController
         
     }
     
+    
+    func setupUI() {
+        myTableview = UITableView(frame: CGRect(x: 0,
+                                                y: 0,
+                                                width: screenWidth,
+                                                height: screenHeight - 64),
+                                  style: .plain)
+        
+        myTableview?.delegate = self
+        myTableview?.dataSource = self
+        
+        myTableview?.separatorColor = .clear
+        myTableview?.backgroundColor = .clear
+        /* 注册cell */
+        myTableview?.register(musicListCell.classForCoder(), forCellReuseIdentifier: identifier)
+        view.addSubview(myTableview!)
+    }
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,25 +106,19 @@ class musicListTableviewcontroller: UITableViewController
         
     }
     
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return musicData.count
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if (UIDevice.current.systemVersion as NSString).doubleValue < currentVersion {
             return 60
@@ -123,7 +129,7 @@ class musicListTableviewcontroller: UITableViewController
     }
     
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! musicListCell
         let songs = musicData[indexPath.row]
         cell.backgroundColor = .clear
@@ -137,7 +143,7 @@ class musicListTableviewcontroller: UITableViewController
     }
     
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         /* 播放 */
@@ -148,7 +154,7 @@ class musicListTableviewcontroller: UITableViewController
         }
         
         let plays = ViewController.shared
-        plays.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        plays.view.backgroundColor = .clear
         plays.playIndex = indexPath.row
 //        navigationController?.pushViewController(plays, animated: true)
         self.present(plays, animated: true, completion: nil)
