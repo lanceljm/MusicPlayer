@@ -113,7 +113,13 @@ class musicListTableviewcontroller: UITableViewController
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        
+        if (UIDevice.current.systemVersion as NSString).doubleValue < currentVersion {
+            return 60
+        }else
+        {
+            return 80
+        }
     }
     
     

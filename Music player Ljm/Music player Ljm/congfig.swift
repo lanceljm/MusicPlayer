@@ -150,7 +150,8 @@ public var currentTime      :    String
 }
 
 
-
+//MARK:- 记录当前版本
+let currentVersion = 10.0
 
 //MARK: -   保存计算型属性，url
 let IPSaveKey = "IPSaveKey"

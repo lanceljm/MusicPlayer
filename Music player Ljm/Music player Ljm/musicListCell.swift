@@ -81,21 +81,34 @@ class musicListCell: UITableViewCell {
         
         /* 歌名 */
         musicName = UILabel()
+//        musicName?.backgroundColor = .red
 //        musicName = UILabel(frame: CGRect(x: 60, y: 0, width: screenWidth - 70, height: 50))
-        musicName?.textColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        musicName?.textColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
         musicName?.textAlignment = .left
-        musicName?.font = UIFont.systemFont(ofSize: 14)
-        addSubview(musicName!)
+//        musicName?.font = UIFont.systemFont(ofSize: 14)
 
 //        
 //
+        addSubview(musicName!)
         
-        musicName?.snp.makeConstraints({ (make:ConstraintMaker!) in
-            make.top.equalTo((musicImage?.snp.top)!).offset(padding * 2)
-            make.left.equalTo((musicImage?.snp.right)!).offset(padding * 3)
-            make.right.equalTo((musicImage?.frame.size.width)!)
-            make.height.equalTo(padding * 2)
-        })
+        if (UIDevice.current.systemVersion as NSString).doubleValue < currentVersion {
+            
+            musicName?.snp.makeConstraints({ (make:ConstraintMaker!) in
+                make.top.equalTo((musicImage?.snp.top)!).offset(padding * 2)
+                make.left.equalTo((musicImage?.snp.right)!).offset(padding * 3)
+                make.right.equalTo((musicImage?.frame.size.width)!)
+                make.height.equalTo(padding * 3)
+            })
+        }else
+        {
+            musicName?.snp.makeConstraints({ (make:ConstraintMaker!) in
+                make.top.equalTo((musicImage?.snp.top)!).offset(padding * 2)
+                make.left.equalTo((musicImage?.snp.right)!).offset(padding * 4)
+//                make.right.equalTo((musicImage?.frame.size.width)!)
+                make.right.equalTo(self.snp.right).offset(-padding * 2)
+                make.height.equalTo(padding * 6)
+            })
+        }
         
 //        _ = musicName?.mas_makeConstraints({ (make:MASConstraintMaker?) in
 //            make?.top.equalTo()(self.musicImage?.mas_top)
@@ -108,19 +121,35 @@ class musicListCell: UITableViewCell {
         
         /* 作者名 */
         musicAuthor = UILabel()
+//        musicAuthor?.backgroundColor = .green
         musicAuthor?.textColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
         musicAuthor?.textAlignment = .left
-        musicAuthor?.font = UIFont.systemFont(ofSize: 10)
+//        musicAuthor?.font = UIFont.systemFont(ofSize: 10)
         addSubview(musicAuthor!)
 
-        
-        musicAuthor?.snp.makeConstraints({ (make:ConstraintMaker!) in
-            make.top.equalTo((musicName?.snp.bottom)!).offset(padding * 2)
-            make.left.equalTo((musicName?.snp.left)!)
-            make.right.equalTo((musicImage?.frame.size.width)!)
-//            make.height.equalTo(padding * 2)
-            make.bottom.equalTo(self.snp.bottom).offset(-padding * 2)
-        })
+        if (UIDevice.current.systemVersion as NSString).doubleValue < currentVersion {
+            
+            musicAuthor?.snp.makeConstraints({ (make:ConstraintMaker!) in
+                make.top.equalTo((musicName?.snp.bottom)!).offset(padding * 2)
+                make.left.equalTo((musicName?.snp.left)!)
+                make.right.equalTo((musicImage?.frame.size.width)!)
+                //            make.height.equalTo(padding * 2)
+                make.bottom.equalTo(self.snp.bottom).offset(-padding * 2)
+            })
+            
+        }else
+        {
+            
+            musicAuthor?.snp.makeConstraints({ (make:ConstraintMaker!) in
+                make.top.equalTo((musicName?.snp.bottom)!).offset(padding * 2)
+                make.left.equalTo((musicName?.snp.left)!)
+//                make.right.equalTo((musicImage?.frame.size.width)!)
+                make.right.equalTo(self.snp.right).offset(-padding * 2)
+                //            make.height.equalTo(padding * 2)
+                make.bottom.equalTo(self.snp.bottom).offset(-padding * 2)
+            })
+            
+        }
         
 //        _ = musicAuthor?.mas_makeConstraints({ (make:MASConstraintMaker?) in
 //            make?.top.equalTo()(self.musicName?.mas_bottom)?.setOffset(CGFloat(padding))
@@ -128,6 +157,25 @@ class musicListCell: UITableViewCell {
 //            make?.left.equalTo()(self.musicName?.mas_width)
 //            make?.height.equalTo()(CGFloat(superview.frame.height * 0.2))
 //        })
+        
+        
+        /*
+         *
+         *   根据设备版本适配字体
+         *
+         */
+        if (UIDevice.current.systemVersion as NSString).doubleValue < currentVersion {
+            musicName?.font = UIFont.systemFont(ofSize: 16)
+            musicAuthor?.font = UIFont.systemFont(ofSize: 12)
+        }else
+        {
+            musicName?.font = UIFont.systemFont(ofSize: 18)
+             /* 加粗 */
+            musicName?.font = UIFont.boldSystemFont(ofSize: 18)
+            musicAuthor?.font = UIFont.systemFont(ofSize: 14)
+             /* 倾斜 */
+            musicAuthor?.font = UIFont.italicSystemFont(ofSize: 12)
+        }
         
     }
     

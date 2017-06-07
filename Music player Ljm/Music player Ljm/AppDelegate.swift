@@ -34,8 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: screenBounds)
         /* 设置背景图片 */
         let bgImage = UIImageView()
-        bgImage.frame = screenBounds
+        bgImage.frame = CGRect(x: 0, y: 64, width: screenWidth, height: screenHeight - 64 - UIApplication.shared.statusBarFrame.height)
         bgImage.image = UIImage(named: "bg")
+//        bgImage.alpha = 0.6
 //        view.addSubview(bgImage)
         window?.addSubview(bgImage)
         
