@@ -11,26 +11,42 @@ import UIKit
 private let identifier  =       "mycell"
 private let path        =       NSHomeDirectory() + "/Documents/Music/"
 
-class downloadMusicTableViewController: UITableViewController
+class downloadMusicTableViewController: UIViewController , UITableViewDelegate , UITableViewDataSource
 {
 
     
     var dataArray       =       [String]()
+    var myTableview : UITableView?
     
     /*
      *
      *   下拉刷新控件
      *
      */
-    var refreshControl = UIRefreshControl()!
+    var refreshControl = UIRefreshControl()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
- 
+        setupUI()
+        
         view.backgroundColor    =   .clear
-        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: identifier)
+
+    }
+    
+    func setupUI()  {
+        myTableview = UITableView(frame: CGRect(x: 0,
+                                                y: 0,
+                                                width: screenWidth,
+                                                height: screenHeight - 64),
+                                  style: .plain)
+        myTableview?.delegate = self
+        myTableview?.dataSource = self
+        myTableview?.separatorColor = .clear
+        myTableview?.backgroundColor = .clear
+        myTableview?.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: identifier)
+        view.addSubview(myTableview!)
         
         /*
          *
@@ -39,9 +55,10 @@ class downloadMusicTableViewController: UITableViewController
          */
         refreshControl.addTarget(self, action: #selector(downloadMusicTableViewController.refreshData), for: .valueChanged)
         refreshControl.attributedTitle = NSAttributedString(string: "下拉刷新数据喽")
-        tableView.addSubview(refreshControl)
+        myTableview?.addSubview(refreshControl)
         refreshData()
     }
+    
     
     /*
      *
@@ -52,8 +69,8 @@ class downloadMusicTableViewController: UITableViewController
          /* 移除老数据 */
 //        self.dataArray.removeAll()
         
-        tableView.reloadData()
-            
+        self.myTableview?.reloadData()
+        self.refreshControl.endRefreshing()
     
     }
     
@@ -70,43 +87,38 @@ class downloadMusicTableViewController: UITableViewController
         while let element       =   enumeator?.nextObject() as? String {
             dataArray.append("\(element)")
         }
-        tableView.reloadData()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
+        myTableview?.reloadData()
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int
+     func numberOfSections(in tableView: UITableView) -> Int
     {
 
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         
         return self.dataArray.count
     }
 
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
 
         cell.textLabel?.text    =   dataArray[indexPath.row]
         cell.accessoryType      =   .checkmark
-
+        cell.backgroundColor = .clear
         return cell
     }
 
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        tableView.deselectRow(at: indexPath, animated: true)
+        myTableview?.deselectRow(at: indexPath, animated: true)
     }
     
     

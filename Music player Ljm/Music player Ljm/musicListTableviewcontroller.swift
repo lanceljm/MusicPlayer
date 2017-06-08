@@ -29,6 +29,10 @@ class musicListTableviewcontroller:
     
     var selectBtn:UIBarButtonItem!
     
+    /* 自定义下拉刷新 */
+    var refreshcontrol = UIRefreshControl()
+    
+    
     
     var topID:Int!
     
@@ -44,8 +48,8 @@ class musicListTableviewcontroller:
         title = "歌单"
         player = AFSoundPlayback()
         
-        self.setupUI()
-        self.setupPickerView()
+        setupUI()
+        setupPickerView()
         
     
             let topidStr = UserDefaults.standard.value(forKey: "titleStr") as! String?
@@ -115,7 +119,7 @@ class musicListTableviewcontroller:
                         }else
                         {
                             self.musicData = songsModels!
-                            self.myTableview?.reloadData()
+//                            self.myTableview?.reloadData()
                         }
                     }
                 }
@@ -143,6 +147,23 @@ class musicListTableviewcontroller:
         /* 注册cell */
         myTableview?.register(musicListCell.classForCoder(), forCellReuseIdentifier: identifier)
         view.addSubview(myTableview!)
+        
+        
+        /*
+         *
+         *  添加下拉刷新
+         *
+         */
+        refreshcontrol.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        refreshcontrol.attributedTitle = NSAttributedString(string: "下拉刷新歌单")
+        myTableview?.addSubview(refreshcontrol)
+        refreshData()
+    }
+    
+    //MARK: -   下拉刷新的方法
+    func refreshData() {
+        self.myTableview?.reloadData()
+        self.refreshcontrol.endRefreshing()
     }
     
      //MARK:- 设置选择器
@@ -331,7 +352,7 @@ class musicListTableviewcontroller:
                         }else
                         {
                             self.musicData = songsModels!
-                            self.myTableview?.reloadData()
+//                            self.myTableview?.reloadData()
                         }
                     }
                 }

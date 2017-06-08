@@ -62,7 +62,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        favorites.title = "music";
         
-        let down = downloadMusicTableViewController(style: UITableViewStyle.plain)
+//        let down = downloadMusicTableViewController(style: UITableViewStyle.plain)
+        let down = downloadMusicTableViewController()
+        
         down.title = "下载列表";
         
         let favoritesNav = navigationcontroller(rootViewController: favorites)
