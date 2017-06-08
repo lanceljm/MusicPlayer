@@ -100,10 +100,6 @@ class ViewController: UIViewController {
     public  var backImage   :   UIImageView?
     
     
-    private var pickerView  :   UIPickerView?
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
