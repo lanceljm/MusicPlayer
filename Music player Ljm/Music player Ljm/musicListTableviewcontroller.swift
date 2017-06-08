@@ -119,7 +119,8 @@ class musicListTableviewcontroller:
                         }else
                         {
                             self.musicData = songsModels!
-//                            self.myTableview?.reloadData()
+                            self.refreshcontrol.endRefreshing()
+                            self.myTableview?.reloadData()
                         }
                     }
                 }
