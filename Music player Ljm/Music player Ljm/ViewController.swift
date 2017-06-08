@@ -148,6 +148,8 @@ class ViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
         
         likeBtn?.setImage(UIImage(named:"like"), for: .normal)
+        
+        
     }
     
     

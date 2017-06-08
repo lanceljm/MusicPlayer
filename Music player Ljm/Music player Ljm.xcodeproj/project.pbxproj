@@ -27,7 +27,6 @@
 		1A34C3F41ED8118C002EA9E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A34C3F31ED8118C002EA9E2 /* Assets.xcassets */; };
 		1A34C3F71ED8118C002EA9E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A34C3F51ED8118C002EA9E2 /* LaunchScreen.storyboard */; };
 		1A34C4001ED81911002EA9E2 /* congfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A34C3FF1ED81911002EA9E2 /* congfig.swift */; };
-		1A72B34A1EE7ED8100647712 /* selectPickerview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A72B3491EE7ED8100647712 /* selectPickerview.swift */; };
 		A4E3BD4434EC010A012861FE /* Pods_Music_player_Ljm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A2ACEFCF5DDFE2208E67AC /* Pods_Music_player_Ljm.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +53,6 @@
 		1A34C3F61ED8118C002EA9E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A34C3F81ED8118C002EA9E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A34C3FF1ED81911002EA9E2 /* congfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = congfig.swift; sourceTree = "<group>"; };
-		1A72B3491EE7ED8100647712 /* selectPickerview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectPickerview.swift; sourceTree = "<group>"; };
 		24A2ACEFCF5DDFE2208E67AC /* Pods_Music_player_Ljm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_player_Ljm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC4A63164126B8128652177 /* Pods-Music player Ljm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music player Ljm.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music player Ljm/Pods-Music player Ljm.release.xcconfig"; sourceTree = "<group>"; };
 		FC0144FE5B83DF5DCDA507AD /* Pods-Music player Ljm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music player Ljm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music player Ljm/Pods-Music player Ljm.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				1A1B60261ED9152A000D488A /* musicListTableviewcontroller.swift */,
-				1A72B3491EE7ED8100647712 /* selectPickerview.swift */,
 			);
 			name = musicList;
 			sourceTree = "<group>";
@@ -351,7 +348,6 @@
 				1A34C3EF1ED8118C002EA9E2 /* ViewController.swift in Sources */,
 				1A1B60171ED826CF000D488A /* songAPI.swift in Sources */,
 				1A1B602A1ED9166D000D488A /* musicListCell.swift in Sources */,
-				1A72B34A1EE7ED8100647712 /* selectPickerview.swift in Sources */,
 				1A1B60311ED9503A000D488A /* downloadMusicTableViewController.swift in Sources */,
 				1A1B601F1ED909ED000D488A /* navigationcontroller.swift in Sources */,
 				1A34C4001ED81911002EA9E2 /* congfig.swift in Sources */,

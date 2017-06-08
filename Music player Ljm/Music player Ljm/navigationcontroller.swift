@@ -15,6 +15,7 @@ class navigationcontroller: UINavigationController {
 
         self.view.backgroundColor = .clear
         
+        
     }
     
     
