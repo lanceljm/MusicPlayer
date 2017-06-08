@@ -17,6 +17,13 @@ class downloadMusicTableViewController: UITableViewController
     
     var dataArray       =       [String]()
     
+    /*
+     *
+     *   下拉刷新控件
+     *
+     */
+    var refreshControl = UIRefreshControl()!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +32,29 @@ class downloadMusicTableViewController: UITableViewController
         view.backgroundColor    =   .clear
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: identifier)
         
+        /*
+         *
+         *   添加刷新
+         *
+         */
+        refreshControl.addTarget(self, action: #selector(downloadMusicTableViewController.refreshData), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "下拉刷新数据喽")
+        tableView.addSubview(refreshControl)
+        refreshData()
+    }
+    
+    /*
+     *
+     *   刷新数据
+     *
+     */
+    func refreshData() {
+         /* 移除老数据 */
+//        self.dataArray.removeAll()
         
+        tableView.reloadData()
+            
+    
     }
     
     
