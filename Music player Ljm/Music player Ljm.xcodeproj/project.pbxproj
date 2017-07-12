@@ -483,6 +483,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FC0144FE5B83DF5DCDA507AD /* Pods-Music player Ljm.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2PC8J9MPF4;
@@ -500,6 +501,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5BC4A63164126B8128652177 /* Pods-Music player Ljm.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2PC8J9MPF4;
